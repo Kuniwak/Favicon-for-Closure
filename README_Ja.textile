@@ -1,0 +1,10 @@
+h1. Closure のための Favicon モジュール
+
+h2. 概要
+
+このモジュールはFavicon画像を簡単に取得する機能を提供します。
+
+h2. API リファレンス
+
+"Wiki":https://github.com/OrgaChem/Faviconr-for-Closure/wiki/API-%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9(API-Reference-for-Japanese) を参照してください。
+英語版は "こちら":https://github.com/OrgaChem/Favicon-for-Closure/wiki/API-Reference 。

@@ -1,0 +1,14 @@
+h1. Favicon module for Closure
+
+"Here":https://github.com/OrgaChem/Favicon-for-Closure/blob/master/README_Ja.textile is a README for Japanese.
+日本語のREADMEは "こちら":https://github.com/OrgaChem/Favicon-for-Closure/blob/master/README_Ja.textile
+
+
+h2. Abstract
+
+This module make easy to get favicon.
+
+
+h2. API Reference
+
+Show the "Wiki":https://github.com/OrgaChem/Favicon-for-Closure/wiki/API-Reference .
