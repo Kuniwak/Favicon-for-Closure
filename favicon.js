@@ -38,6 +38,8 @@ orga.favicon.DEFAULT_SRC = ['data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABA',
 
 
 /**
+ * Returns an URI such as {scheme}://{domain}/favicon.ico .
+ * Returns {@link orga.fvicon.DEFAULT_SRC}, if the favicon.ico is not found.
  * @param {goog.Uri|string} uri A target URI.
  * @return {string} Favicon URI about the site. Maybe it is data-scheme URI.
  */
