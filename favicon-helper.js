@@ -19,17 +19,22 @@ goog.require('orga.uri');
 
 
 /**
+ * Class for helper makes easy a favicon image element creation.
  * @constructor
  * @extends {goog.events.EventTarget}
+ * @param {?orga.favicon.FaviconGetter=} opt_getter Optional favicon getter.
  */
-orga.favicon.FaviconHelper = function() {
+orga.favicon.FaviconHelper = function(opt_getter) {
   goog.base(this);
-  var F = orga.ex.adapt.getAdaptedFaviconGetter();
 
   /** @private */
-  this.favGetter_ = new F();
+  this.favGetter_ = opt_getter || new orga.favicon.FaviconGetter();
 };
 goog.inherits(orga.favicon.FaviconHelper, goog.events.EventTarget);
+
+
+/** @const */
+orga.favicon.FaviconHelper.prototype.DEFAULT_SRC = orga.favicon.DEFAULT_SRC;
 
 
 /** @override */
@@ -37,6 +42,7 @@ orga.favicon.FaviconHelper.prototype.disposeInternal = function() {
   goog.base(this, 'disposeInternal');
   this.favGetter_.dispose();
   delete this.favGetter_;
+  delete this.DEFAULT_SRC;
 };
 
 
@@ -46,7 +52,7 @@ orga.favicon.FaviconHelper.prototype.disposeInternal = function() {
  *    It will be gave data link.
  */
 orga.favicon.FaviconHelper.prototype.getUri = function(uri, callback) {
-  this.favGetter_.getUri.apply(this, arguments);
+  this.favGetter_.getUri(uri, callback);
 };
 
 
@@ -60,7 +66,9 @@ orga.favicon.FaviconHelper.prototype.getImageElement = function(uri) {
   goog.events.listenOnce(
       /* src         */ elem,
       /* type        */ goog.events.EventType.ERROR,
-      /* listener    */ this.handleError);
+      /* listener    */ this.handleError,
+      /* opt_capture */ false,
+      /* opt_scope   */ this);
   return elem;
 };
 
@@ -83,6 +91,6 @@ orga.favicon.FaviconHelper.prototype.setFaviconUri = function(uri, elem) {
  * @param {goog.events.Event} e An error event fired from HTMLImageElement.
  */
 orga.favicon.FaviconHelper.prototype.handleError = function(e) {
-  e.target.src = orga.favicon.DEFAULT_SRC;
+  e.target.src = this.DEFAULT_SRC;
   e.preventDefault();
 };
