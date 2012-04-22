@@ -43,7 +43,7 @@ orga.favicon.DEFAULT_SRC = ['data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABA',
  * @param {goog.Uri|string} uri A target URI.
  * @return {string} Favicon URI about the site. Maybe it is data-scheme URI.
  */
-orga.favicon.getUri = function(uri) {
+orga.favicon.getImageSrc = function(uri) {
   var newUri = orga.uri.unescapeIfNecessary(uri);
   newUri.setPath('/favicon.ico');
   return newUri.toString();

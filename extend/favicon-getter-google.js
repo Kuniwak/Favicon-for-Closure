@@ -6,7 +6,7 @@
  * @author orga.chem.job@gmail.com (Orga Chem)
  */
 
-goog.provide('orga.favicon.google.GoogleFaviconGetter');
+goog.provide('orga.favicon.GoogleFaviconGetter');
 
 goog.require('goog.Uri');
 goog.require('goog.Uri.QueryData');
@@ -15,49 +15,42 @@ goog.require('orga.uri');
 
 
 /**
- * A base URI of favicon API provided by google.
+ * A base URI of favicon API provided by 
  * @const
  */
-orga.favicon.google.CGI_URI = 'http://www.google.com/s2/u/0/favicons';
+orga.favicon.CGI_URI = 'http://www.google.com/s2/u/0/favicons';
 
 
 /**
  * @constructor
  * @extends {orga.favicon.FaviconGetter}
  */
-orga.favicon.google.GoogleFaviconGetter = function() {
+orga.favicon.GoogleFaviconGetter = function() {
   goog.base(this);
 };
-goog.inherits(orga.favicon.google.GoogleFaviconGetter,
+goog.inherits(orga.favicon.GoogleFaviconGetter,
     orga.favicon.FaviconGetter);
 
 
 /** @const */
-orga.favicon.google.GoogleFaviconGetter.prototype.CGI_URI =
-    orga.favicon.google.CGI_URI;
+orga.favicon.GoogleFaviconGetter.prototype.CGI_URI =
+    orga.favicon.CGI_URI;
 
     
 /** @override */
-orga.favicon.google.GoogleFaviconGetter.prototype.disposeInternal = function() {
+orga.favicon.GoogleFaviconGetter.prototype.disposeInternal = function() {
   goog.base(this, 'disposeInternal');
   delete this.CGI_URI;
 };
 
 
-/**
- * @param {goog.Uri|string} uri A target URI.
- * @param {Function(string)} callback A callback function.
- *    It will be gave data link.
- */
-orga.favicon.google.GoogleFaviconGetter.prototype.getUri =
-    function(uri, callback) {
+/** @override */
+orga.favicon.GoogleFaviconGetter.prototype.getImageSrc =
+    function(uri) {
   var google = new goog.Uri(this.CGI_URI);
   var query = new goog.Uri.QueryData();
   var newUri = orga.uri.unescapeIfNecessary(uri);
   query.add('domain', newUri.getDomain());
   google.setQueryData(query);
-  var fav = google.toString();
-
-  goog.asserts.assertFunction(callback);
-  callback(fav);
+  return google.toString();
 };
