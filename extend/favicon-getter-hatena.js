@@ -13,12 +13,6 @@ goog.require('goog.Uri.QueryData');
 goog.require('orga.favicon.FaviconGetter');
 
 
-/**
- * A base URI of favicon API provided by 
- * @const
- */
-orga.favicon.CGI_URI = 'http://favicon.hatena.ne.jp/';
-
 
 /**
  * @constructor
@@ -31,12 +25,19 @@ goog.inherits(orga.favicon.HatenaFaviconGetter,
     orga.favicon.FaviconGetter);
 
 
+/**
+ * A base URI of favicon API provided by Hatena.
+ * @const
+ */
+orga.favicon.HatenaFaviconGetter.CGI_URI = 'http://favicon.hatena.ne.jp/';
+
+
 /** @const */
 orga.favicon.HatenaFaviconGetter.prototype.CGI_URI =
-    orga.favicon.CGI_URI;
+    orga.favicon.HatenaFaviconGetter.CGI_URI;
 
 
-/** @overide */
+/** @override */
 orga.favicon.HatenaFaviconGetter.prototype.disposeInternal = function() {
   goog.base(this, 'disposeInternal');
   delete this.CGI_URI;

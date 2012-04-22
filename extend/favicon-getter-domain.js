@@ -12,6 +12,7 @@ goog.require('orga.favicon.FaviconGetter');
 goog.require('orga.uri');
 
 
+
 /**
  * @constructor
  * @extends {orga.favicon.FaviconGetter}

@@ -14,12 +14,6 @@ goog.require('orga.favicon.FaviconGetter');
 goog.require('orga.uri');
 
 
-/**
- * A base URI of favicon API provided by 
- * @const
- */
-orga.favicon.CGI_URI = 'http://www.google.com/s2/u/0/favicons';
-
 
 /**
  * @constructor
@@ -32,11 +26,19 @@ goog.inherits(orga.favicon.GoogleFaviconGetter,
     orga.favicon.FaviconGetter);
 
 
+/**
+ * A base URI of favicon API provided by Google.
+ * @const
+ */
+orga.favicon.GoogleFaviconGetter.CGI_URI =
+    'http://www.google.com/s2/u/0/favicons';
+
+
 /** @const */
 orga.favicon.GoogleFaviconGetter.prototype.CGI_URI =
-    orga.favicon.CGI_URI;
+    orga.favicon.GoogleFaviconGetter.CGI_URI;
 
-    
+
 /** @override */
 orga.favicon.GoogleFaviconGetter.prototype.disposeInternal = function() {
   goog.base(this, 'disposeInternal');

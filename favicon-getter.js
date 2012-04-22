@@ -21,7 +21,7 @@ goog.require('orga.uri');
 /**
  * Class for helper makes easy a favicon image element creation.
  * @constructor
- * @extends {goog.events.EventTarget}
+ * @extends {goog.Disposable}
  */
 orga.favicon.FaviconGetter = function() {
   goog.base(this);
